@@ -1,0 +1,5 @@
+# icebreaker-peer
+
+## License
+
+MIT

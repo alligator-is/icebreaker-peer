@@ -1,0 +1,22 @@
+{
+  "name": "icebreaker-peer",
+  "version": "0.1.0",
+  "description": "icebreaker-peer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "icebreaker",
+    "peer",
+    "p2p"
+  ],
+  "author": "Markus Wunderlin",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "ip": "^0.3.2",
+    "node-uuid": "^1.4.2"
+  }
+}
