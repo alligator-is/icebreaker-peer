@@ -1,7 +1,7 @@
 {
   "name": "icebreaker-peer",
   "version": "0.1.2",
-  "description": "icebreaker-peer",
+  "description": "Generic icebreaker peer mixin.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
