@@ -14,7 +14,13 @@ _.mixin({
 
       emitter.connections = {}
 
-      var apply = function (options) {
+      function check(listener){
+        if (this.listeners(listener).length === 0) {
+          throw new Error('no peer '+listener+' listener defined')
+        }
+      }
+
+      function apply(options) {
         if (typeof options === 'object') {
           for (var k in options) {
             var value = options[k]
@@ -25,28 +31,18 @@ _.mixin({
 
       emitter.start = function (options) {
         apply(options)
-
         if (!this.address) this.address = ip.address()
-
-        if (this.listeners('start').length === 0) {
-          throw new Error('no peer start listener defined')
-        }
-
+        check.call(this,'start')
         this.emit('start')
       }
 
       emitter.stop = function () {
-        if (this.listeners('stop').length === 0) {
-          throw new Error('no peer stop listener defined')
-        }
-
+        check.call(this,'stop')
         this.emit('stop')
       }
 
       emitter.connect = function (options) {
-        if (this.listeners('connect').length === 0) {
-          throw new Error('no peer connect listener defined')
-        }
+        check.call(this,'connect')
         if (typeof options !== 'object') options = {}
         this.emit('connect', options)
       }
