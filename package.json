@@ -1,6 +1,6 @@
 {
   "name": "icebreaker-peer",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Generic icebreaker peer mixin.",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "icebreaker": "^0.6.0",
+    "icebreaker": "^0.6.1",
     "ip": "^0.3.2",
     "node-uuid": "^1.4.2"
   }
