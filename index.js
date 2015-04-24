@@ -44,6 +44,7 @@ _.mixin({
       emitter.connect = function (options) {
         check.call(this,'connect')
         if (typeof options !== 'object') options = {}
+        options.direction=1
         this.emit('connect', options)
       }
 
@@ -52,10 +53,41 @@ _.mixin({
         if (!params.id) params.id = uuid.v4()
         if (!params.address) params.address = this.address || ip.address()
         if (!params.port) params.port = this.port
+        if (!params.direction)params.direction=-1
 
-        params.source = _(params.source, _.cleanup(function (err) {
-          delete emitter.connections[params.id]
-        }))
+        var source = params.source, sink = params.sink
+        var ended=false,_ended=false
+
+        var del = function(){
+          if(ended===true && _ended === true){
+            delete emitter.connections[params.id]
+            del=null
+            params=null
+          }
+        }
+
+        params.source = function(end,cb){
+         source(end,function(end,data){
+          if(end)ended=true
+          cb(end,data)
+          if(end&&del)del()
+          })
+        }
+
+        params.sink = function(read){
+         sink(function(abort,cb){
+           if(abort) {
+             _ended=true
+              if(del)del()
+              return read(abort,cb)
+           }
+           read(abort,function(end,data){
+            cb(end,data)
+            if(end)_ended=true
+            if(end&&del)del()
+          })
+         })
+        }
 
         emitter.connections[params.id] = params
         this.emit('connection', params)
