@@ -4,7 +4,7 @@
   "description": "Generic icebreaker peer mixin.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "node-uuid": "^1.4.2"
   },
   "devDependencies": {
-    "icebreaker": "^0.6.1"
+    "icebreaker": "^0.6.1",
+    "tape": "^4.0.0"
   }
 }
