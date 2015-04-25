@@ -1,6 +1,8 @@
 # icebreaker-peer
 Generic icebreaker peer mixin.
 
+[![Travis](https://img.shields.io/travis/alligator-io/icebreaker-peer.svg)](https://travis-ci.org/alligator-io/icebreaker-peer)
+
 ## Available implementations
 * tls: [icebreaker-peer-tls](https://github.com/alligator-io/icebreaker-peer-tls.git)
 * net: [icebreaker-peer-net](https://github.com/alligator-io/icebreaker-peer-net.git)
