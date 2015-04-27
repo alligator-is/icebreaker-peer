@@ -2,6 +2,7 @@ var uuid = require('node-uuid')
 var EventEmitter = require('events').EventEmitter
 var _ = require('icebreaker')
 var ip = require('ip')
+var net = require('net')
 
 function isFunction(obj) {
   return typeof obj === 'function'
@@ -45,6 +46,9 @@ _.mixin({
         check.call(this,'connect')
         if (typeof options !== 'object') options = {}
         options.direction=1
+        if(typeof options.address ==='string' && !net.isIP(options.address)){
+          options.hostname = options.address
+        }
         this.emit('connect', options)
       }
 
