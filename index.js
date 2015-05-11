@@ -33,6 +33,8 @@ _.mixin({
       emitter.start = function (options) {
         apply(options)
         if (!this.address) this.address = ip.address()
+        if (!this.port) this.port = 6005
+
         check.call(this,'start')
         this.emit('start')
       }
