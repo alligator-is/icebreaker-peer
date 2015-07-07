@@ -39,10 +39,33 @@ _.mixin({
         this.emit('start')
       }
 
+      var seen =[]
+
       emitter.stop = function () {
-        check.call(this,'stop')
-        this.emit('stop')
-      }
+        var self = this
+
+        check.call(this, 'stop')
+
+        _(
+          [ this.connections ],
+          _.flatten(),
+          _.filter(function (c) {
+            return seen.indexOf(c.id) === -1 && isFunction(c.close)
+          }),
+          _.asyncMap(function (c, cb) {
+            seen.push(c.id)
+            c.close(function () { cb() })
+           }),
+          _.onEnd(function () {
+            setTimeout(function () {
+              if (self.connections && Object.keys(self.connections).length > 0)
+                return self.stop()
+              seen = []
+              self.emit('stop')
+            }, 50)
+           })
+         )
+     }
 
       emitter.connect = function (options) {
         check.call(this,'connect')
@@ -63,10 +86,10 @@ _.mixin({
 
         var source = params.source, sink = params.sink
         var ended=false,_ended=false
-
+        var self = this
         var del = function(){
           if(ended===true && _ended === true){
-            delete emitter.connections[params.id]
+            delete self.connections[params.id]
             del=null
             params=null
           }
