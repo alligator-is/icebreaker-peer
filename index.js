@@ -89,9 +89,11 @@ _.mixin({
         var self = this
         var del = function(){
           if(ended===true && _ended === true){
+            var connection = self.connections[params.id]
             delete self.connections[params.id]
             del=null
             params=null
+            self.emit('disconnected',connection)
           }
         }
 
