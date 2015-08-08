@@ -20,10 +20,10 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "ip": "^0.3.3",
-    "node-uuid": "^1.4.2"
+    "node-uuid": "^1.4.2",
+    "icebreaker": "^0.7.0"
   },
   "devDependencies": {
-    "icebreaker": "^0.7.0",
-    "tape": "^4.0.0"
+    "tape": "^4.0.1"
   }
 }
