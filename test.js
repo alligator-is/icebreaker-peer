@@ -1,11 +1,10 @@
 var test = require('tape')
 var _ = require('icebreaker')
-require('./')
-
+var Peer = require('./')
 var net = require('net')
 var count = 0
 
-var peer = _.peer({
+var peer = Peer.bind(null,{
   name: 'testPeer',
   start: function () {
     count++
@@ -16,18 +15,18 @@ var peer = _.peer({
     var a = _.pair()
     var b = _.pair()
 
-    if (peer2.address == params.address) {
+    if (peer2.address === params.address) {
       peer2.connection({
         source: a.source,
         sink: b.sink,
         address: params.address
       })
     }
-
     this.connection({
       source: b.source,
       sink: a.sink,
-      direction: params.direction
+      direction: params.direction,
+      id:params.id
     })
   },
 
@@ -58,6 +57,7 @@ test('connect: peer1->peer2', function (t) {
     t.equal(typeof connection.sink, 'function')
     t.equal(typeof connection.address, 'string')
     t.equal(typeof connection.id, 'string')
+    t.equal(connection.peer, peer2.peer)
     t.equal(connection.direction, 1)
     t.ok(net.isIP(connection.address))
     t.equal(Object.keys(peer1.connections).length, 1)
@@ -74,6 +74,7 @@ test('connect: peer1->peer2', function (t) {
 
   peer2.on('connection', function (connection) {
     t.equal(connection.direction, -1)
+    t.equal(connection.peer,peer2.peer)
     t.test('peer2->peer1->peer2', function (t2) {
 
       _(
@@ -87,7 +88,6 @@ test('connect: peer1->peer2', function (t) {
           t2.equal(Object.keys(peer2.connections).length, 1)
         })
       )
-
       t2.equal(Object.keys(peer2.connections).length, 0)
       t2.equal(Object.keys(peer1.connections).length, 0)
     })
