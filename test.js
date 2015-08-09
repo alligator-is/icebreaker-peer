@@ -57,7 +57,6 @@ test('connect: peer1->peer2', function (t) {
     t.equal(typeof connection.sink, 'function')
     t.equal(typeof connection.address, 'string')
     t.equal(typeof connection.id, 'string')
-    t.equal(connection.peer, peer2.peer)
     t.equal(connection.direction, 1)
     t.ok(net.isIP(connection.address))
     t.equal(Object.keys(peer1.connections).length, 1)
