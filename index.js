@@ -23,6 +23,7 @@ function check(emitter, listener) {
   }
 }
 
+
 function Peer(params,ext) {
   if(!(this instanceof Peer)) return new Peer(params,ext)
 
@@ -32,6 +33,7 @@ function Peer(params,ext) {
 
   this.connections = {}
   this._seen = []
+  this.state = 'stopped';
 
   apply(params, this)
 
@@ -62,6 +64,16 @@ proto.start = function (options) {
 proto.stop = function () {
   var self = this
 
+
+  if(this.state === "stop" || this.state === "start") return
+
+  if(this.state==='started')
+  this.once('stopped',function(){
+    if(this.state ==="stop") this.state==='stopped'
+  })
+
+  this.state='stop'
+
   check(this, 'stop')
 
   _(
@@ -88,6 +100,7 @@ proto.stop = function () {
 }
 
 proto.connect = function (params) {
+  if(this.state==="stop"||this.state === "stopped") return
   check(this, 'connect')
   if (typeof params !== 'object') params = {}
   params.direction = 1
@@ -99,10 +112,8 @@ proto.connect = function (params) {
   this.emit('connect', params)
 }
 
-
 proto.connection = function (params) {
   var self = this
-
   if (!params.type) params.type = this.name
   if (!params.id)params.id = uuid.v4()
   if (!params.address) params.address = this.address || ip.address()
