@@ -23,7 +23,6 @@ function check(emitter, listener) {
   }
 }
 
-
 function Peer(params,ext) {
   if(!(this instanceof Peer)) return new Peer(params,ext)
 
@@ -63,7 +62,6 @@ proto.start = function (options) {
 
 proto.stop = function () {
   var self = this
-
 
   if(this.state === "stop" || this.state === "start") return
 
