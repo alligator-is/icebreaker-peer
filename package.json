@@ -19,11 +19,11 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
+    "icebreaker": "^1.0.0",
     "ip": "^0.3.3",
-    "node-uuid": "^1.4.2",
-    "icebreaker": "^0.7.0"
+    "node-uuid": "^1.4.7"
   },
   "devDependencies": {
-    "tape": "^4.0.1"
+     "tape": "^4.2.2"
   }
 }
