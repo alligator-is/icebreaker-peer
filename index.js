@@ -100,7 +100,6 @@ proto.stop = function () {
 }
 
 proto.connect = function (params) {
-  if(this.state==="stop"||this.state === "stopped") return
   check(this, 'connect')
   if (typeof params !== 'object') params = {}
   params.direction = 1
