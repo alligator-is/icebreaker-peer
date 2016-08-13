@@ -21,7 +21,8 @@
   "dependencies": {
     "chloride": "^2.2.2",
     "icebreaker": "^1.0.2",
-    "icebreaker-network": "^0.3.0"
+    "icebreaker-network": "^0.3.0",
+    "pull-pushable": "^2.0.1" 
   },
   "devDependencies": {
     "tape": "^4.2.2"
