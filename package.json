@@ -1,7 +1,7 @@
 {
   "name": "icebreaker-peer",
   "version": "2.0.0",
-  "description": "Generic icebreaker peer mixin.",
+  "description": "icebreaker Peer API based on icebreaker-network.",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
