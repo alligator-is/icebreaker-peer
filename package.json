@@ -1,6 +1,6 @@
 {
   "name": "icebreaker-peer",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "icebreaker Peer API based on icebreaker-network.",
   "main": "index.js",
   "scripts": {
@@ -19,9 +19,8 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "icebreaker": "^1.0.3",
-    "icebreaker-network": "^0.6.0",
-    "pull-pushable": "^2.0.1" 
+    "icebreaker": "^2.0.0",
+    "icebreaker-network": "^0.7.0"
   },
   "devDependencies": {
     "chloride": "^2.2.3",
