@@ -24,6 +24,6 @@
   },
   "devDependencies": {
     "chloride": "^2.2.3",
-    "tape": "^4.6.0"
+    "tape": "^4.6.3"
   }
 }
