@@ -19,11 +19,11 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "icebreaker": "^2.0.0",
-    "icebreaker-network": "^0.7.0"
+    "icebreaker": "^2.0.1",
+    "icebreaker-network": "^0.7.1"
   },
   "devDependencies": {
-    "chloride": "^2.2.3",
-    "tape": "^4.6.3"
+    "chloride": "^2.2.7",
+    "tape": "^4.8.0"
   }
 }
