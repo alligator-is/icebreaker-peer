@@ -20,10 +20,10 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "icebreaker": "^2.0.1",
-    "icebreaker-network": "^0.7.8"
+    "icebreaker-network": "^0.7.9"
   },
   "devDependencies": {
-    "chloride": "^2.2.7",
+    "chloride": "^2.2.8",
     "tape": "^4.8.0"
   }
 }
