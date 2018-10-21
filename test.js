@@ -11,7 +11,7 @@ function authenticate(id, cb) {
 }
 
 var alice = cl.crypto_sign_keypair()
-var peer = Peer({ keys: alice, authenticate: authenticate, appKey: 'alligator@1.0.0' })
+var peer = Peer({ keys: alice, authenticate: authenticate, appKey: 'alligator@1.0.0' ,encoding:"base58"})
 peer.listen('shs+tcp://localhost:9090')
 
 test('shs+tcp', function (t) {
@@ -19,7 +19,7 @@ test('shs+tcp', function (t) {
   _(
     peer,
     peer.on({
-      ready: function (e) {
+      ready: function (e) { 
         t.equal(e.address.length, 1)
         peer.connect(e.address[0])
       },
@@ -38,6 +38,7 @@ test('shs+tcp', function (t) {
 })
 
 test('shs+tcp+unix', function (t) {
+
   peer = Peer({ keys: alice, authenticate: authenticate, appKey: 'alligator@1.0.0' })
   peer.listen('shs+tcp+unix://'+path.join("/",os.tmpdir() , '/test4.socket'))
 
@@ -46,7 +47,6 @@ test('shs+tcp+unix', function (t) {
     peer,
     peer.on({
       ready: function (e) {
-        console.log(e.address)
         t.equal(e.address.length, 1)
         peer.connect(e.address[0])
       },
