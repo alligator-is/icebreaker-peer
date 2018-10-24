@@ -1,6 +1,6 @@
 {
   "name": "icebreaker-peer",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "icebreaker Peer API based on icebreaker-network.",
   "main": "index.js",
   "scripts": {
