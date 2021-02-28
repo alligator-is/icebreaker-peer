@@ -1,6 +1,6 @@
 {
   "name": "icebreaker-peer",
-  "version": "3.0.24",
+  "version": "3.0.25",
   "description": "icebreaker Peer API based on icebreaker-network.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alligator-io/icebreaker-peer.git"
+    "url": "https://github.com/alligator-is/icebreaker-peer.git"
   },
   "keywords": [
     "icebreaker",
@@ -19,12 +19,12 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "icebreaker": "^2.0.5",
-    "icebreaker-network": "^1.0.10",
-    "is-in-browser": "^1.1.3"
+    "icebreaker": "^2.0.6",
+    "icebreaker-network": "^1.0.11",
+    "is-in-browser": "^2.0.0"
   },
   "devDependencies": {
-    "chloride": "^2.4.0",
-    "tape": "^5.1.1"
+    "chloride": "^2.4.1",
+    "tape": "^5.2.1"
   }
 }
